@@ -1,2 +1,2 @@
-# LC-ChatOnline
-LC-ChatOnline
+# LC-ChatApp
+LC-ChatApp
