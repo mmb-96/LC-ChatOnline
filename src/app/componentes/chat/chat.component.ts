@@ -12,7 +12,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class ChatComponent implements OnInit {
 
+  // Variable para recuperar la id del chat
   public chat: any;
+  // Variable para recuperar la sala del chat
   public room: any;
   public msg: string;
   public userName;

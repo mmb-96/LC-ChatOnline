@@ -15,6 +15,10 @@ export class AuthGuard implements CanActivate {
   constructor( private AFAuth: AngularFireAuth, private router: Router) {
   }
 
+  /*
+    Este metodo revisa si el usuario esta conectado o no. En caso de estar conectado no deja el acceso al login ni al registro
+    ya que en la parte de app-routing utilizamos este guard para Home.
+  */
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     return this.AFAuth.authState.pipe(map(auth => {
       if ( isNullOrUndefined(auth) ) {
