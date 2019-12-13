@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { NoLoginGuard } from './guards/no-login.guard';
 
+// Los canActivate es la llamada a los Guard para permitir el acceso de un sito a otro.
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule), canActivate: [ AuthGuard ]},

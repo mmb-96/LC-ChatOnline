@@ -1,3 +1,4 @@
+// Interfaz para recuperar los chat.
 export interface Chat {
     description: string;
     name: string;

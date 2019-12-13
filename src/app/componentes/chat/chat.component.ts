@@ -12,11 +12,13 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class ChatComponent implements OnInit {
 
-  // Variable para recuperar la id del chat
+  // Variable para recuperar la id del chat.
   public chat: any;
-  // Variable para recuperar la sala del chat
+  // Variable para recuperar la sala del chat.
   public room: any;
+  // Variable para enviar los mensajes.
   public msg: string;
+  // Variable para guardar el nombre del usuario que escribe el mensage.
   public userName;
 
   constructor(private AFAuth: AngularFireAuth,
@@ -31,10 +33,14 @@ export class ChatComponent implements OnInit {
     this.getUserID();
   }
 
+  // Metodo que cierra el chat.
   closeChat() {
     this.modal.dismiss();
   }
 
+  /*
+  Metodo que envia los mensages a la base de datos.
+  */
   sendMenssage() {
 
     const mensaje: Message = {
@@ -48,8 +54,11 @@ export class ChatComponent implements OnInit {
     this.msg = '';
   }
 
+  /*
+  Metodo que obtenemos el nombre del usuario atraves del servicio.
+  */
   getUserID() {
     const userID = this.AFAuth.auth.currentUser.uid;
-    console.log(this.authSer.getUserName(userID).subscribe(doc => this.userName = doc.data().name));
+    this.authSer.getUserName(userID).subscribe(doc => this.userName = doc.data().name);
   }
 }

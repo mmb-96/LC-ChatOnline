@@ -12,6 +12,7 @@ import { Chat } from '../models/chat';
 })
 export class HomePage implements OnInit {
 
+  // Variable para guardar los chat de la base de datos.
   public chatRooms: any = [];
 
   constructor(private authSer: AuthService,
@@ -19,15 +20,22 @@ export class HomePage implements OnInit {
               private modal: ModalController,
               private actionSheetController: ActionSheetController) {}
 
+  /*
+  Metodo que llama al servicio para desloguear al usuario.
+  */
   onLogout() {
     this.authSer.logout();
   }
 
+  // Inicializa la vista con todos los chat cargados.
   ngOnInit(): void {
     this.chatSer.getChatRooms().subscribe(chats => this.chatRooms = chats);
 
   }
 
+  /*
+  Metodo para abrir el chat seleccionado, este chat se abre con modal, tipo popup.
+  */
   openChat(chats: Chat) {
     this.modal.create({
       component: ChatComponent,
@@ -37,6 +45,7 @@ export class HomePage implements OnInit {
     }).then( (modal) => modal.present());
   }
 
+  // Se utiliza para el boton de los chat de la izquierda que nos permite desconectarnos de la app.
    async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
       header: 'Opciones',

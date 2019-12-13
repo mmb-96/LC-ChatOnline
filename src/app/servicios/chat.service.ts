@@ -14,6 +14,9 @@ export class ChatService {
 
   constructor( private db: AngularFirestore ) { }
 
+  /*
+  Metodo que trae todos los chat de la base de dato.
+  */
   getChatRooms() {
     return this.db.collection('chatRooms').snapshotChanges().pipe(map(rooms => {
       return rooms.map(room => {
@@ -24,10 +27,16 @@ export class ChatService {
     }));
   }
 
+  /*
+  Metodo que trae el chat que selecciones.
+  */
   getChatRoom(chatID: string): Observable<any> {
     return this.db.collection('chatRooms').doc(chatID).valueChanges();
   }
 
+  /*
+  Metodo que envia el mensaje del usuario a la coleccion de chatRooms y lo une al array de mensajes.
+  */
   sendMsgToFirebase(message: Message, chatID: string ) {
     this.db.collection('chatRooms').doc(chatID).update({
       messages: firestore.FieldValue.arrayUnion(message),

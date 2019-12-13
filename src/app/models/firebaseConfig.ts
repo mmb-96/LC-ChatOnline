@@ -1,3 +1,4 @@
+// Contante con la configuración para poder acceder a Firebase.
 export const firebaseConfig = {
     apiKey: 'AIzaSyCXLn1yNJN3BPo1eIYeX-sbrJ5mQEJ4klU',
     authDomain: 'chatapp-82f31.firebaseapp.com',
